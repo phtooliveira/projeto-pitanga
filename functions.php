@@ -4,32 +4,32 @@ $servicos = [
     [
         "nome" => "Desenvolvimento Web",
         "imagem" => "imagens/undraw_software_engineer_lvl5.svg",
-        "descricao" => "Sites dinamicos, otimizados para motores de busca"
+        "descricao" => "Sites dinamicos, otimizados para motores de busca. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     ],
     [
         "nome" => "Marketing Digital",
         "imagem" => "imagens/undraw_social_dashboard_k3pt.svg",
-        "descricao" => "Alcance um publico maior, venda mais rápido!"
+        "descricao" => "Alcance um publico maior, venda mais rápido! Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     ],
     [
         "nome" => "Consultoria UX",
         "imagem" => "imagens/undraw_report.svg",
-        "descricao" => "Ofereça a melhor experiência para seus usuários!"
+        "descricao" => "Ofereça a melhor experiência para seus usuários! Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     ],
     [
         "nome" => "Consultoria Agil",
         "imagem" => "imagens/undraw_report.svg",
-        "descricao" => "Torne seu time de dev em pastelaria"
+        "descricao" => "Torne seu time de dev em pastelaria, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     ],
     [
         "nome" => "Consultoria Agil",
         "imagem" => "imagens/undraw_report.svg",
-        "descricao" => "Torne seu time de dev em pastelaria"
+        "descricao" => "Torne seu time de dev em pastelaria, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     ],
     [
         "nome" => "Consultoria Agil",
         "imagem" => "imagens/undraw_report.svg",
-        "descricao" => "Torne seu time de dev em pastelaria"
+        "descricao" => "Torne seu time de dev em pastelaria, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     ]
 ];
 
@@ -54,4 +54,15 @@ function getNome($id)
 {
     global $servicos;
     return $servicos[$id]["nome"];
+}
+
+function getDescricao($id)
+{
+    global $servicos;
+    return $servicos[$id]["descricao"];
+}
+function getImagem($id)
+{
+    global $servicos;
+    return $servicos[$id]["imagem"];
 }

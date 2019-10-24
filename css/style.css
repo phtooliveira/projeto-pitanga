@@ -62,3 +62,9 @@ footer {
     padding-top: 10px;
 
 }
+
+.ilustra-servico {
+    max-width: 100%;
+    width: 350px;
+    margin: 0 auto;
+}
