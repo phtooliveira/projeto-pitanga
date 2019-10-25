@@ -67,4 +67,13 @@ footer {
     max-width: 100%;
     width: 350px;
     margin: 0 auto;
+    /* centraliza imagem */
+}
+
+table img {
+    width: 100px;
+}
+
+table tr td:last-child{
+    width: 200px;
 }
