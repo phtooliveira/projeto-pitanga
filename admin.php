@@ -1,4 +1,11 @@
-<?php include_once('header.php'); ?>
+<?php
+include_once('header.php');
+
+if (!isset($_SESSION['logado'])) {
+    header('location: login.php');
+}
+
+?>
 <main>
     <div class="container my-5">
         <div class="row">

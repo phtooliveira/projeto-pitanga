@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // $servicos = [
 //     [
 //         "nome" => "Desenvolvimento Web",
@@ -125,3 +127,27 @@ function listarServicos()
 
 // echo "<pre>";
 // var_dump(listarServicos());
+
+if (isset($_POST['login'])) {
+
+    $email = isset($_POST['email']) ? $_POST['email'] : '';
+    $senha = isset($_POST['senha']) ? $_POST['senha'] : '';
+
+    if ($email == "" || $senha == "") {
+        $erro = "Preencha os campos corretamente";
+    } else {
+        //acesso permitido
+        unset($erro);
+        $_SESSION['logado'] = true;
+        if (isset($_POST['manter_logado'])) {
+            setcookie("email", $email, time() + 3600, '/');
+            setcookie("senha", $senha, time() + 3600, '/');
+        }
+
+        header('Location: index.php');
+    }
+}
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+}

@@ -31,6 +31,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#contato">Contato</a>
                     </li>
+                    <?php
+                    if (isset($_SESSION['logado'])) {
+                        echo "<li><a class='nav-link'>Bem vindo, usuario</a></li>";
+                        echo "<li><a class='nav-link' href='login.php?logout=true'>sair</a></li>";
+                    } else {
+                        echo "<li><a class='nav-link' href='login.php'>login</a></li>";
+                    }
+                    ?>
                 </ul>
             </div>
         </nav>
