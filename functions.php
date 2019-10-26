@@ -33,21 +33,21 @@
 //     ]
 // ];
 
-function listarServicos()
-{
-    global $servicos;
+// function listarServicos()
+// {
+//     global $servicos;
 
-    foreach ($servicos as $index => $servico) {
-        echo "<div class='col-md-4 mt-4'>
-            <div class='card'>
-                <img class='card-img-top p-4' src='$servico[imagem]' alt='Imagem de capa do card'>
-                <div class='card-body'>
-                    <p class='card-text text-center'><a href='servico.php?id=$index'>$servico[nome]</a></p>
-                </div>
-            </div>
-        </div>";
-    }
-}
+//     foreach ($servicos as $index => $servico) {
+//         echo "<div class='col-md-4 mt-4'>
+//             <div class='card'>
+//                 <img class='card-img-top p-4' src='$servico[imagem]' alt='Imagem de capa do card'>
+//                 <div class='card-body'>
+//                     <p class='card-text text-center'><a href='servico.php?id=$index'>$servico[nome]</a></p>
+//                 </div>
+//             </div>
+//         </div>";
+//     }
+// }
 
 
 function getNome($id)
@@ -105,3 +105,23 @@ if (isset($_POST['cadastrar_servico'])) {
         file_put_contents($arquivoServicos, $jsonServicos); // adiciona info no arquivo
     }
 }
+
+function listarServicos()
+{
+    // trazer serviços do json
+    $arquivoJson = 'servicos.json';
+
+    $servicos = [];
+
+    if (file_exists($arquivoJson)) {
+        $jsonServicos = file_get_contents($arquivoJson); // conteudo arquivo
+        $arrayServicos = json_decode($jsonServicos, true); // json para array
+
+        $servicos = $arrayServicos['servicos'];
+    }
+
+    return $servicos;
+}
+
+// echo "<pre>";
+// var_dump(listarServicos());
