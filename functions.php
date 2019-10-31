@@ -2,55 +2,6 @@
 
 session_start();
 
-// $servicos = [
-//     [
-//         "nome" => "Desenvolvimento Web",
-//         "imagem" => "imagens/undraw_software_engineer_lvl5.svg",
-//         "descricao" => "Sites dinamicos, otimizados para motores de busca. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-//     ],
-//     [
-//         "nome" => "Marketing Digital",
-//         "imagem" => "imagens/undraw_social_dashboard_k3pt.svg",
-//         "descricao" => "Alcance um publico maior, venda mais rápido! Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-//     ],
-//     [
-//         "nome" => "Consultoria UX",
-//         "imagem" => "imagens/undraw_report.svg",
-//         "descricao" => "Ofereça a melhor experiência para seus usuários! Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-//     ],
-//     [
-//         "nome" => "Consultoria Agil",
-//         "imagem" => "imagens/undraw_report.svg",
-//         "descricao" => "Torne seu time de dev em pastelaria, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-//     ],
-//     [
-//         "nome" => "Consultoria Agil",
-//         "imagem" => "imagens/undraw_report.svg",
-//         "descricao" => "Torne seu time de dev em pastelaria, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-//     ],
-//     [
-//         "nome" => "Consultoria Agil",
-//         "imagem" => "imagens/undraw_report.svg",
-//         "descricao" => "Torne seu time de dev em pastelaria, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-//     ]
-// ];
-
-// function listarServicos()
-// {
-//     global $servicos;
-
-//     foreach ($servicos as $index => $servico) {
-//         echo "<div class='col-md-4 mt-4'>
-//             <div class='card'>
-//                 <img class='card-img-top p-4' src='$servico[imagem]' alt='Imagem de capa do card'>
-//                 <div class='card-body'>
-//                     <p class='card-text text-center'><a href='servico.php?id=$index'>$servico[nome]</a></p>
-//                 </div>
-//             </div>
-//         </div>";
-//     }
-// }
-
 
 function getNome($id)
 {
@@ -71,8 +22,6 @@ function getImagem($id)
 }
 
 if (isset($_POST['cadastrar_servico'])) {
-    // echo "<pre>";
-    // var_dump($_POST);
     $arquivoServicos = 'servicos.json';
     $imagemServico = '';
     if ($_FILES) {
@@ -125,9 +74,6 @@ function listarServicos()
     return $servicos;
 }
 
-// echo "<pre>";
-// var_dump(listarServicos());
-
 if (isset($_POST['login'])) {
 
     $email = isset($_POST['email']) ? $_POST['email'] : '';
@@ -149,5 +95,98 @@ if (isset($_POST['login'])) {
 }
 
 if (isset($_GET['logout'])) {
+    // deslogar
     session_destroy();
+}
+
+
+//para exibir informações no excluir_servico.php
+if (isset($_GET['excluir_id'])) {
+    $id_servico = $_GET['excluir_id']; // id recebido na URL
+
+    $arquivoJson = 'servicos.json'; // arquivo de serviços
+
+    $servico = [];
+
+    if (file_exists($arquivoJson)) {
+        $jsonServicos = file_get_contents($arquivoJson); // conteudo arquivo
+        $arrayServicos = json_decode($jsonServicos, true); // json para array
+
+        $servico = $arrayServicos['servicos'][$id_servico]; // retorna um serviço especifico pelo ID
+    }
+}
+
+
+
+//para exibir informações no editar_servico.php
+if (isset($_GET['editar_id'])) {
+    $id_servico = $_GET['editar_id']; // id recebido na URL
+
+    $arquivoJson = 'servicos.json'; // arquivo de serviços
+
+    $servico = [];
+
+    if (file_exists($arquivoJson)) {
+        $jsonServicos = file_get_contents($arquivoJson); // conteudo arquivo
+        $arrayServicos = json_decode($jsonServicos, true); // json para array
+
+        $servico = $arrayServicos['servicos'][$id_servico]; // retorna um serviço especifico pelo ID
+    }
+
+    // var_dump($servico);
+}
+
+
+// envio do form de editar
+if (isset($_POST['editar_servico'])) {
+    $arquivoServicos = 'servicos.json';
+    $id = $_POST['id']; // pega id do serviço que quer editar
+    $imagemServico = '';
+
+
+    if ($_FILES) { // verificar se algum arquivo foi enviado
+        $nome = $_FILES['imagem']['name']; //nome do arquivo
+        $nomeTemp = $_FILES['imagem']['tmp_name']; // local temporario do arquivo
+        $erro = $_FILES['imagem']['error']; // lista de erros no upload
+        $pastaRaiz = dirname(__FILE__); // traz caminho da pasta do projeto
+        $pasta = "servicos/";
+        $caminhoCompleto = $pastaRaiz . '/' . $pasta . $nome; // cria caminho completo da imagem
+
+        if ($erro == UPLOAD_ERR_OK) {
+            move_uploaded_file($nomeTemp, $caminhoCompleto); // move aqruivo do local temporario para pasta /servicos
+            $imagemServico = $pasta . $nome;
+        }
+    }
+
+    if (file_exists($arquivoServicos)) {
+        $jsonServicos = file_get_contents($arquivoServicos);
+        $arrayServicos = json_decode($jsonServicos, true);
+        $infoServico = $_POST;
+        if ($imagemServico != "") { 
+            $infoServico['imagem'] = $imagemServico;
+        } else { // se não tiver nova imagem mantem a antiga
+            $infoServico['imagem'] = $arrayServicos['servicos'][$id]['imagem'];
+        }
+        $arrayServicos['servicos'][$id] = $infoServico; // insere nova informação na posição do serviço escolhido
+        $jsonServicos = json_encode($arrayServicos, true); // passa array para json
+        file_put_contents($arquivoServicos, $jsonServicos); // atualiza arquivo
+
+        header('Location: admin.php'); // redireciona para admin
+    } else {
+        echo "Arquivo não encontrado!";
+    }
+}
+
+
+if (isset($_POST['excluir_servico'])) {
+    $arquivoServicos = "servicos.json";
+    $jsonServicos = file_get_contents($arquivoServicos);
+    $arrayServicos = json_decode($jsonServicos, true);
+    $id = $_POST['id']; // traz id do serviço a ser excluido
+    unset($arrayServicos['servicos'][$id]); // remove a posição do array
+    $arrayServicos['servicos'] = array_values($arrayServicos['servicos']); // reordena array
+    $jsonServicos = json_encode($arrayServicos, true); // passa array para json
+    file_put_contents($arquivoServicos, $jsonServicos); // atualiza o arquivo
+
+    header('Location: admin.php');  // redireciona para admin
 }

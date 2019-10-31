@@ -39,8 +39,8 @@ if (!isset($_SESSION['logado'])) {
                                     <td>" . $servicos[$indice]["descricao"] . "</td>
                                     <td><img src='" . $servicos[$indice]["imagem"] . "' alt='Ilustra UX'></td>
                                     <td>
-                                        <a href='#' class='btn btn-info'>Editar</a>
-                                        <a href='#' class='btn btn-danger'>Excluir</a>
+                                        <a href='editar_servico.php?editar_id=" . $indice . "' class='btn btn-info'>Editar</a>
+                                        <a href='excluir_servico.php?excluir_id=" . $indice . "' class='btn btn-danger'>Excluir</a>
                                     </td>
                                 </tr>";
                             }
