@@ -23,13 +23,13 @@
             <div class="collapse navbar-collapse pull-right" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#servicos">Serviços</a>
+                        <a class="nav-link" href="http://localhost/projeto-pitanga/index.php#servicos">Serviços</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#sobre">Sobre</a>
+                        <a class="nav-link" href="http://localhost/projeto-pitanga/index.php#sobre">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contato">Contato</a>
+                        <a class="nav-link" href="http://localhost/projeto-pitanga/index.php#contato">Contato</a>
                     </li>
                     <?php
                     if (isset($_SESSION['logado'])) {

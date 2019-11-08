@@ -14,6 +14,7 @@
             <img src="<?php echo getImagem($_GET['id']); ?>" class="ilustra-servico" alt="<?php echo getNome($_GET['id']); ?>">
         </div>
     </div>
+    
 </section>
 
 <?php require_once('footer.php'); ?>

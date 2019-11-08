@@ -31,6 +31,24 @@
             <div class="col">
                 <h2 class="mb-5">Serviços</h2>
             </div>
+            <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="servicos/undraw_process_e90d.png" alt="Imagem de capa do card">
+  <div class="card-body">
+    <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem vero consectetur neque delectus eos tempore qui? Fuga obcaecati autem adipisci maiores. Nobis vero sunt fugit! Cumque eum reprehenderit maiores laborum?</p>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="servicos/undraw_multitasking_hqg3.png" alt="Imagem de capa do card">
+  <div class="card-body">
+    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus fuga, modi delectus eaque debitis assumenda veritatis eveniet possimus eos ipsam, sequi quis, id quia veniam quaerat porro ut incidunt tenetur!</p>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="servicos/undraw_code_typing_7jnv.png" alt="Imagem de capa do card">
+  <div class="card-body">
+    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime sed fuga aut quidem dignissimos porro officia impedit laboriosam ipsa nisi, molestiae doloremque vitae nam magni, eaque dolore, deserunt voluptas consequatur.</p>
+  </div>
+</div>
         </div>
         <div class="row">
             <?php listarServicos(); ?>

@@ -1,5 +1,5 @@
 <?php
-include('header.php');
+include('header2.php');
 
 if (isset($_SESSION['logado']) && !isset($_GET['logout'])) {
     header('Location: admin.php');
