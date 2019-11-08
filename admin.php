@@ -13,7 +13,7 @@ if (!isset($_SESSION['logado'])) {
                 <h1>Painel Administrativo</h1>
             </div>
             <div class="col text-right">
-                <a href="criar_servico.php" class="btn btn-primary">+ Novo serviço</a>
+                <a href="criar_servico.php" class="btn btn-primary">+ Novo Serviço</a>
             </div>
         </div>
         <div class="row">

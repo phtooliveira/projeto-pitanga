@@ -133,7 +133,7 @@ if (isset($_GET['editar_id'])) {
         $servico = $arrayServicos['servicos'][$id_servico]; // retorna um serviço especifico pelo ID
     }
 
-    // var_dump($servico);
+   
 }
 
 

@@ -18,7 +18,7 @@ if (isset($servico)) {
             <input type="text" class="form-control" name="nome" id="nome" value="<?php echo $nome; ?>" readonly>
         </div>
         <div class="form-group">
-            <label for="descricao">Descricao</label>
+            <label for="descricao">Descrição</label>
             <textarea readonly row="3" class="form-control" name="descricao" id="descricao"><?php echo $descricao; ?></textarea>
         </div>
         <img src="<?php echo $imagem ?>" width="300">

@@ -14,7 +14,7 @@
                         <input type="text" class="form-control" name="nome" id="nome">
                     </div>
                     <div class="form-group">
-                        <label for="descricao">Descricao</label>
+                        <label for="descricao">Descrição</label>
                         <textarea row="3" class="form-control" name="descricao" id="descricao"></textarea>
                     </div>
                     <div class="form-group">
